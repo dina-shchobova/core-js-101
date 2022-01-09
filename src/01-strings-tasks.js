@@ -233,8 +233,28 @@ function getRectangleString(width, height) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const lowerCase = 'abcdefghijklmnopqrstuvwxyz';
+  let newStr = '';
+
+  function newChar(abc, char) {
+    const index = abc.indexOf(char);
+    const newIndex = (index < 13) ? index + 13 : index - 13;
+    return abc[newIndex];
+  }
+
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < str.length; i++) {
+    if (upperCase.indexOf(str[i]) !== -1) {
+      newStr += newChar(upperCase, str[i]);
+    } else if (lowerCase.indexOf(str[i]) !== -1) {
+      newStr += newChar(lowerCase, str[i]);
+    } else {
+      newStr += str[i];
+    }
+  }
+  return newStr;
 }
 
 /**
@@ -252,6 +272,7 @@ function encodeToRot13(/* str */) {
  */
 function isString(/* value */) {
   throw new Error('Not implemented');
+  // return (typeof value === 'string');
 }
 
 
@@ -279,8 +300,30 @@ function isString(/* value */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  let first = 0;
+  let second = 0;
+  if (value.length === 2) {
+    switch (value[0]) {
+      case 'A': first = 1; break;
+      case 'J': first = 11; break;
+      case 'Q': first = 12; break;
+      case 'K': first = 13; break;
+      default:
+        first = +value[0]; break;
+    }
+  } else {
+    first = 10;
+  }
+  switch (value[value.length - 1]) {
+    case '♣': second = 0; break;
+    case '♦': second = 13; break;
+    case '♥': second = 26; break;
+    case '♠': second = 39; break;
+    default:
+      break;
+  }
+  return first + second - 1;
 }
 
 
