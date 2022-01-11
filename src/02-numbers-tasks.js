@@ -23,7 +23,6 @@ function getRectangleArea(width, height) {
   return width * height;
 }
 
-
 /**
  * Returns a circumference of circle given by radius.
  *
@@ -53,6 +52,11 @@ function getCircleCircumference(radius) {
  */
 function getAverage(/* value1, value2 */) {
   throw new Error('Not implemented');
+  // eslint-disable-next-line no-undef
+  // return (BigInt(value1) + BigInt(value2)) / BigInt(2);
+  // const min = Math.min(value1, value2);
+  // const max = Math.max(value1, value2);
+  // return min + (max - min) / 2;
 }
 
 /**
@@ -90,7 +94,6 @@ function getLinearEquationRoot(a, b) {
   // throw new Error('Not implemented');
   return (-b) / a;
 }
-
 
 /**
  * Returns an angle (in radians) between two vectors given by xi and yi,
@@ -202,8 +205,14 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  // eslint-disable-next-line no-plusplus
+  for (let i = 2; i <= n; i++) {
+    if (n % i === 0 && n !== i) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
