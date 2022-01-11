@@ -208,8 +208,7 @@ function extractEmails(str) {
 function getRectangleString(width, height) {
   const firstStr = `┌${'─'.repeat(width - 2)}┐\n`;
   let str = '';
-  // eslint-disable-next-line no-plusplus
-  for (let i = 1; i <= height - 2; i++) {
+  for (let i = 1; i <= height - 2; i += 1) {
     str += `│${' '.repeat(width - 2)}│\n`;
   }
   const lastStr = `└${'─'.repeat(width - 2)}┘\n`;
@@ -244,8 +243,7 @@ function encodeToRot13(str) {
     return abc[newIndex];
   }
 
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i += 1) {
     if (upperCase.indexOf(str[i]) !== -1) {
       newStr += newChar(upperCase, str[i]);
     } else if (lowerCase.indexOf(str[i]) !== -1) {
