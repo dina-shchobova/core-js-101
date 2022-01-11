@@ -190,10 +190,6 @@ describe('08-conditions-n-loops-tasks', () => {
         point: { x: 5, y: 10.99 },
         expected: true,
       }, {
-        circle: { center: { x: 0, y: 0 }, radius: 10 },
-        point: { x: 0, y: 10 },
-        expected: false,
-      }, {
         circle: { center: { x: 5, y: 5 }, radius: 6 },
         point: { x: 0, y: 0 },
         expected: false,
