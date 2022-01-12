@@ -136,10 +136,16 @@ function isTriangle(a, b, c) {
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
  *
  */
-function doRectanglesOverlap(/* rect1, rect2 */) {
-  throw new Error('Not implemented');
+function doRectanglesOverlap(rect1, rect2) {
+  let answer = true;
+  if (rect1.top > rect2.top + rect2.height || rect2.top > rect1.top + rect1.height) {
+    answer = false;
+  }
+  if (rect1.left + rect1.width < rect2.left || rect2.left + rect2.width < rect1.left) {
+    answer = false;
+  }
+  return answer;
 }
-
 
 /**
  * Returns true, if point lies inside the circle, otherwise false.
@@ -167,10 +173,10 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(/* circle, point */) {
-  throw new Error('Not implemented');
+function isInsideCircle(circle, point) {
+  // eslint-disable-next-line max-len
+  return ((point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2 <= circle.radius ** 2);
 }
-
 
 /**
  * Returns the first non repeated char in the specified strings otherwise returns null.
@@ -191,7 +197,6 @@ function findFirstSingleChar(str) {
   }
   return null;
 }
-
 
 /**
  * Returns the string representation of math interval,
@@ -220,7 +225,6 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
   const lastBracket = (isEndIncluded) ? ']' : ')';
   return (a < b) ? `${firstBracket}${a}, ${b}${lastBracket}` : `${firstBracket}${b}, ${a}${lastBracket}`;
 }
-
 
 /**
  * Reverse the specified string (put all chars in reverse order)

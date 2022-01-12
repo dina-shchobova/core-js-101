@@ -229,9 +229,10 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
-  // return ((typeof +value) === 'number') ? +value : def;
+function toNumber(value, def) {
+  // throw new Error('Not implemented');
+  // eslint-disable-next-line no-restricted-globals
+  return (isNaN(Number(value)) ? def : +value);
 }
 
 module.exports = {
