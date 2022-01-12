@@ -23,8 +23,11 @@
  *   getComposition(Math.sin, Math.asin)(x) => Math.sin(Math.asin(x))
  *
  */
-function getComposition(/* f, g */) {
-  throw new Error('Not implemented');
+function getComposition(f, g) {
+  // eslint-disable-next-line func-names
+  return function (x) {
+    return f(g(x));
+  };
 }
 
 
@@ -44,10 +47,12 @@ function getComposition(/* f, g */) {
  *   power05(16) => 4
  *
  */
-function getPowerFunction(/* exponent */) {
-  throw new Error('Not implemented');
+function getPowerFunction(exponent) {
+  // eslint-disable-next-line func-names
+  return function (x) {
+    return x ** exponent;
+  };
 }
-
 
 /**
  * Returns the polynom function of one argument based on specified coefficients.
@@ -62,10 +67,22 @@ function getPowerFunction(/* exponent */) {
  *   getPolynom(8)     => y = 8
  *   getPolynom()      => null
  */
-function getPolynom() {
-  throw new Error('Not implemented');
+function getPolynom(...rest) {
+  const len = rest.length;
+  let y = null;
+  // eslint-disable-next-line func-names
+  return function (x) {
+    if (len === 3) {
+      y = rest[0] * (x ** 2) + rest[1] * x + rest[2];
+    } else if (len === 2) {
+      y = rest[0] * x + rest[1];
+    } else if (len === 1) {
+      // eslint-disable-next-line prefer-destructuring
+      y = rest[0];
+    }
+    return y;
+  };
 }
-
 
 /**
  * Memoizes passed function and returns function
@@ -81,10 +98,13 @@ function getPolynom() {
  *   ...
  *   memoizer() => the same random number  (next run, returns the previous cached result)
  */
-function memoize(/* func */) {
-  throw new Error('Not implemented');
+function memoize(func) {
+  const x = func();
+  // eslint-disable-next-line func-names
+  return function () {
+    return x;
+  };
 }
-
 
 /**
  * Returns the function trying to call the passed function and if it throws,
