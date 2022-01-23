@@ -189,14 +189,13 @@ function isInsideCircle(circle, point) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar() {
-  throw new Error('Not implemented');
-  // for (let i = 0; i < str.length; i += 1) {
-  //   if (str.indexOf(str[i]) === str.lastIndexOf(str[i])) {
-  //     return str[i];
-  //   }
-  // }
-  // return null;
+function findFirstSingleChar(str) {
+  for (let i = 0; i < str.length; i += 1) {
+    if (str.indexOf(str[i]) === str.lastIndexOf(str[i])) {
+      return str[i];
+    }
+  }
+  return null;
 }
 
 /**
@@ -281,37 +280,38 @@ function reverseInteger(num) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(ccn) {
-  const str = ccn.toString();
-  let sum = 0;
-  if (str.length % 2 === 0) {
-    for (let i = 0; i < str.length; i += 1) {
-      if (i % 2 === 0) {
-        const num = +str[i] * 2;
-        if (num > 9) {
-          sum += (num - 9);
-        } else {
-          sum += num;
-        }
-      } else {
-        sum += +str[i];
-      }
-    }
-  } else {
-    for (let i = 0; i < str.length; i += 1) {
-      if (i % 2 !== 0) {
-        const num = +str[i] * 2;
-        if (num > 9) {
-          sum += (num - 9);
-        } else {
-          sum += num;
-        }
-      } else {
-        sum += +str[i];
-      }
-    }
-  }
-  return (sum % 10 === 0);
+function isCreditCardNumber() {
+  throw new Error('Not implemented');
+  // const str = ccn.toString();
+  // let sum = 0;
+  // if (str.length % 2 === 0) {
+  //   for (let i = 0; i < str.length; i += 1) {
+  //     if (i % 2 === 0) {
+  //       const num = +str[i] * 2;
+  //       if (num > 9) {
+  //         sum += (num - 9);
+  //       } else {
+  //         sum += num;
+  //       }
+  //     } else {
+  //       sum += +str[i];
+  //     }
+  //   }
+  // } else {
+  //   for (let i = 0; i < str.length; i += 1) {
+  //     if (i % 2 !== 0) {
+  //       const num = +str[i] * 2;
+  //       if (num > 9) {
+  //         sum += (num - 9);
+  //       } else {
+  //         sum += num;
+  //       }
+  //     } else {
+  //       sum += +str[i];
+  //     }
+  //   }
+  // }
+  // return (sum % 10 === 0);
 }
 
 /**
@@ -328,19 +328,18 @@ function isCreditCardNumber(ccn) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot() {
-  throw new Error('Not implemented');
-  // let sum = 0;
-  // while (num > 0) {
-  //   sum += num % 10;
-  //   // eslint-disable-next-line no-param-reassign
-  //   num = Math.floor(num / 10);
-  // }
-  //
-  // if (sum < 10) {
-  //   return sum;
-  // }
-  // return getDigitalRoot(sum);
+function getDigitalRoot(num) {
+  let sum = 0;
+  while (num > 0) {
+    sum += num % 10;
+    // eslint-disable-next-line no-param-reassign
+    num = Math.floor(num / 10);
+  }
+
+  if (sum < 10) {
+    return sum;
+  }
+  return getDigitalRoot(sum);
 }
 
 
