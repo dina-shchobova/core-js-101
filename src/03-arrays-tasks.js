@@ -613,14 +613,12 @@ function selectMany(arr, childrenSelector) {
  *   ['one','two','three'], [2]       => 'three'  (arr[2])
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
-function getElementByIndexes(/* arr, indexes */) {
-  throw new Error('Not implemented');
-  // let subArr = arr;
-  // let i = 0;
-  // while (i < indexes.length) {
-  //   subArr = subArr[indexes[i]];
-  //   i += 1;
-  // }
+function getElementByIndexes(arr, indexes, n = 0) {
+  // throw new Error('Not implemented');
+  if (typeof arr !== 'object') {
+    return arr;
+  }
+  return getElementByIndexes(arr[indexes[n]], indexes, n + 1);
 }
 
 

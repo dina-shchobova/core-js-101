@@ -112,7 +112,7 @@ function chainPromises(array, action) {
       // eslint-disable-next-line no-loop-func
       promise.then((res) => {
         results.push(res);
-      })
+      }, () => {})
       // eslint-disable-next-line no-loop-func
         .finally(() => {
           resolvedCount += 1;
