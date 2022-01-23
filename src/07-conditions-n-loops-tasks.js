@@ -166,7 +166,7 @@ function doRectanglesOverlap(rect1, rect2) {
  *
  * @param {object} circle
  * @param {object} point
- * @return {bool}
+ * @return {boolean}
  *
  * @example:
  *   { center: { x:0, y:0 }, radius:10 },  { x:0, y:0 }     => true
@@ -174,8 +174,8 @@ function doRectanglesOverlap(rect1, rect2) {
  *
  */
 function isInsideCircle(circle, point) {
-  // eslint-disable-next-line max-len
-  return (((point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2 - 0.01) <= circle.radius ** 2);
+  // eslint-disable-next-line max-len,no-restricted-properties
+  return (Math.pow(point.x - circle.center.x, 2) + Math.pow(point.y - circle.center.y, 2) <= Math.pow(circle.radius, 2));
 }
 
 /**
