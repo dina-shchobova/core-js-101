@@ -7,6 +7,135 @@
  ************************************************************************************************ */
 
 
+/**
+ * Returns the 'Fizz','Buzz' or an original number using the following rules:
+ * 1) return original number
+ * 2) but if number multiples of three return 'Fizz'
+ * 3) for the multiples of five return 'Buzz'
+ * 4) for numbers which are multiples of both three and five return 'FizzBuzz'
+ *
+ * @param {number} num
+ * @return {any}
+ *
+ * @example
+ *   2 =>  2
+ *   3 => 'Fizz'
+ *   5 => 'Buzz'
+ *   4 => 4
+ *  15 => 'FizzBuzz'
+ *  20 => 'Buzz'
+ *  21 => 'Fizz'
+ *
+ */
+function getFizzBuzz(num) {
+  // throw new Error('Not implemented');
+  let answer;
+  if (num % 3 === 0 && num % 5 === 0) {
+    answer = 'FizzBuzz';
+  } else if (num % 3 === 0) {
+    answer = 'Fizz';
+  } else if (num % 5 === 0) {
+    answer = 'Buzz';
+  } else {
+    answer = num;
+  }
+  return answer;
+}
+
+/**
+ * Returns the factorial of the specified integer n.
+ *
+ * @param {number} n
+ * @return {number}
+ *
+ * @example:
+ *   1  => 1
+ *   5  => 120
+ *   10 => 3628800
+ */
+function getFactorial(n) {
+  if (n === 1) {
+    return 1;
+  }
+  return n * getFactorial(n - 1);
+}
+
+/**
+ * Returns the sum of integer numbers between n1 and n2 (inclusive).
+ *
+ * @param {number} n1
+ * @param {number} n2
+ * @return {number}
+ *
+ * @example:
+ *   1,2   =>  3  ( = 1+2 )
+ *   5,10  =>  45 ( = 5+6+7+8+9+10 )
+ *   -1,1  =>  0  ( = -1 + 0 + 1 )
+ */
+function getSumBetweenNumbers(n1, n2) {
+  // throw new Error('Not implemented');
+  let i = n1;
+  let sum = 0;
+  while (i <= n2) {
+    sum += i;
+    i += 1;
+  }
+  return sum;
+}
+
+
+/**
+ * Returns true, if a triangle can be built with the specified sides a, b, c
+ * and false in any other ways.
+ *
+ * @param {number} a
+ * @param {number} b
+ * @param {number} c
+ * @return {boolean}
+ *
+ * @example:
+ *   1,2,3    =>  false
+ *   3,4,5    =>  true
+ *   10,1,1   =>  false
+ *   10,10,10 =>  true
+ */
+function isTriangle(a, b, c) {
+  return (a + b > c && a + c > b && b + c > a);
+}
+
+
+/**
+ * Returns true, if two specified axis-aligned rectangles overlap, otherwise false.
+ * Each rectangle representing by object
+ *  {
+ *     top: 5,
+ *     left: 5,
+ *     width: 20,
+ *     height: 10
+ *  }
+ *
+ *  (5;5)
+ *     -------------
+ *     |           |
+ *     |           |  height = 10
+ *     -------------
+ *        width=20
+ *
+ * NOTE: Please use canvas coordinate space (https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes#The_grid),
+ * it differs from Cartesian coordinate system.
+ *
+ * @param {object} rect1
+ * @param {object} rect2
+ * @return {bool}
+ *
+ * @example:
+ *   { top: 0, left: 0, width: 10, height: 10 },
+ *   { top: 5, left: 5, width: 20, height: 20 }    =>  true
+ *
+ *   { top: 0, left: 0, width: 10, height: 10 },
+ *   { top:20, left:20, width: 20, height: 20 }    =>  false
+ *
+ */
 function doRectanglesOverlap(rect1, rect2) {
   let answer = true;
   if (rect1.top > rect2.top + rect2.height || rect2.top > rect1.top + rect1.height) {
@@ -60,58 +189,6 @@ function isInsideCircle(circle, point) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(str) {
-  for (let i = 0; i < str.length; i += 1) {
-    if (str.indexOf(str[i]) === str.lastIndexOf(str[i])) {
-      return str[i];
-    }
-  }
-  return null;
-}
-
-/**
- * Returns the string representation of math interval,
- * specified by two points and include / exclude flags.
- * See the details: https://en.wikipedia.org/wiki/Interval_(mathematics)
- *
- * Please take attention, that the smaller number should be the first in the notation
- *
- * @param {number} a
- * @param {number} b
- * @param {bool} isStartIncluded
- * @param {bool} isEndIncluded
- * @return {string}
- *
- * @example
- *   0, 1, true, true   => '[0, 1]'
- *   0, 1, true, false  => '[0, 1)'
- *   0, 1, false, true  => '(0, 1]'
- *   0, 1, false, false => '(0, 1)'
- * Smaller number has to be first :
- *   5, 3, true, true   => '[3, 5]'
- *
- */
-function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-  const firstBracket = (isStartIncluded) ? '[' : '(';
-  const lastBracket = (isEndIncluded) ? ']' : ')';
-  return (a < b) ? `${firstBracket}${a}, ${b}${lastBracket}` : `${firstBracket}${b}, ${a}${lastBracket}`;
-}
-
-/**
- * Reverse the specified string (put all chars in reverse order)
- *
- * @param {string} str
- * @return {string}
- *
- * @example:
- * 'The quick brown fox jumps over the lazy dog' => 'god yzal eht revo spmuj xof nworb kciuq ehT'
- * 'abracadabra' => 'arbadacarba'
- * 'rotator' => 'rotator'
- * 'noon' => 'noon'
- */
-function reverseString(str) {
-  return str.split('').reverse().join('');
-}
 
 /**
  * Reverse the specified integer number (put all digits in reverse order)
@@ -339,15 +416,15 @@ function evaluateTicTacToePosition(/* position */) {
 
 
 module.exports = {
-  // getFizzBuzz,
-  // getFactorial,
-  // getSumBetweenNumbers,
-  // isTriangle,
+  getFizzBuzz,
+  getFactorial,
+  getSumBetweenNumbers,
+  isTriangle,
   doRectanglesOverlap,
   isInsideCircle,
-  findFirstSingleChar,
-  getIntervalString,
-  reverseString,
+  // findFirstSingleChar,
+  // getIntervalString,
+  // reverseString,
   reverseInteger,
   isCreditCardNumber,
   getDigitalRoot,
