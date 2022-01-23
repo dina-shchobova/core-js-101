@@ -173,7 +173,10 @@ function doRectanglesOverlap(rect1, rect2) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-
+function isInsideCircle(circle, point) {
+  // eslint-disable-next-line max-len
+  return (((point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2 - 0.01) <= circle.radius ** 2);
+}
 
 /**
  * Returns the first non repeated char in the specified strings otherwise returns null.
@@ -470,7 +473,7 @@ module.exports = {
   getSumBetweenNumbers,
   isTriangle,
   doRectanglesOverlap,
-  // isInsideCircle,
+  isInsideCircle,
   findFirstSingleChar,
   getIntervalString,
   reverseString,
