@@ -7,6 +7,112 @@
  ************************************************************************************************ */
 
 
+function doRectanglesOverlap(rect1, rect2) {
+  let answer = true;
+  if (rect1.top > rect2.top + rect2.height || rect2.top > rect1.top + rect1.height) {
+    answer = false;
+  }
+  if (rect1.left + rect1.width < rect2.left || rect2.left + rect2.width < rect1.left) {
+    answer = false;
+  }
+  return answer;
+}
+
+/**
+ * Returns true, if point lies inside the circle, otherwise false.
+ * Circle is an object of
+ *  {
+ *     center: {
+ *       x: 5,
+ *       y: 5
+ *     },
+ *     radius: 20
+ *  }
+ *
+ * Point is object of
+ *  {
+ *     x: 5,
+ *     y: 5
+ *  }
+ *
+ * @param {object} circle
+ * @param {object} point
+ * @return {bool}
+ *
+ * @example:
+ *   { center: { x:0, y:0 }, radius:10 },  { x:0, y:0 }     => true
+ *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
+ *
+ */
+function isInsideCircle(circle, point) {
+  // eslint-disable-next-line max-len
+  return ((point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2 <= circle.radius ** 2);
+}
+
+/**
+ * Returns the first non repeated char in the specified strings otherwise returns null.
+ *
+ * @param {string} str
+ * @return {string}
+ *
+ * @example:
+ *   'The quick brown fox jumps over the lazy dog' => 'T'
+ *   'abracadabra'  => 'c'
+ *   'entente' => null
+ */
+function findFirstSingleChar(str) {
+  for (let i = 0; i < str.length; i += 1) {
+    if (str.indexOf(str[i]) === str.lastIndexOf(str[i])) {
+      return str[i];
+    }
+  }
+  return null;
+}
+
+/**
+ * Returns the string representation of math interval,
+ * specified by two points and include / exclude flags.
+ * See the details: https://en.wikipedia.org/wiki/Interval_(mathematics)
+ *
+ * Please take attention, that the smaller number should be the first in the notation
+ *
+ * @param {number} a
+ * @param {number} b
+ * @param {bool} isStartIncluded
+ * @param {bool} isEndIncluded
+ * @return {string}
+ *
+ * @example
+ *   0, 1, true, true   => '[0, 1]'
+ *   0, 1, true, false  => '[0, 1)'
+ *   0, 1, false, true  => '(0, 1]'
+ *   0, 1, false, false => '(0, 1)'
+ * Smaller number has to be first :
+ *   5, 3, true, true   => '[3, 5]'
+ *
+ */
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  const firstBracket = (isStartIncluded) ? '[' : '(';
+  const lastBracket = (isEndIncluded) ? ']' : ')';
+  return (a < b) ? `${firstBracket}${a}, ${b}${lastBracket}` : `${firstBracket}${b}, ${a}${lastBracket}`;
+}
+
+/**
+ * Reverse the specified string (put all chars in reverse order)
+ *
+ * @param {string} str
+ * @return {string}
+ *
+ * @example:
+ * 'The quick brown fox jumps over the lazy dog' => 'god yzal eht revo spmuj xof nworb kciuq ehT'
+ * 'abracadabra' => 'arbadacarba'
+ * 'rotator' => 'rotator'
+ * 'noon' => 'noon'
+ */
+function reverseString(str) {
+  return str.split('').reverse().join('');
+}
+
 /**
  * Reverse the specified integer number (put all digits in reverse order)
  *
@@ -237,11 +343,11 @@ module.exports = {
   // getFactorial,
   // getSumBetweenNumbers,
   // isTriangle,
-  // doRectanglesOverlap,
-  // isInsideCircle,
-  // findFirstSingleChar,
-  // getIntervalString,
-  // reverseString,
+  doRectanglesOverlap,
+  isInsideCircle,
+  findFirstSingleChar,
+  getIntervalString,
+  reverseString,
   reverseInteger,
   isCreditCardNumber,
   getDigitalRoot,
