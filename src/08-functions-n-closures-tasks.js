@@ -23,11 +23,11 @@
  *   getComposition(Math.sin, Math.asin)(x) => Math.sin(Math.asin(x))
  *
  */
-function getComposition() {
+function getComposition(f, g) {
   // eslint-disable-next-line func-names
-  // return function (x) {
-  //   return f(g(x));
-  // };
+  return function (x) {
+    return f(g(x));
+  };
 }
 
 
