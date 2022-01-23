@@ -23,11 +23,11 @@
  *   getComposition(Math.sin, Math.asin)(x) => Math.sin(Math.asin(x))
  *
  */
-function getComposition(f, g) {
+function getComposition() {
   // eslint-disable-next-line func-names
-  return function (x) {
-    return f(g(x));
-  };
+  // return function (x) {
+  //   return f(g(x));
+  // };
 }
 
 
@@ -47,12 +47,11 @@ function getComposition(f, g) {
  *   power05(16) => 4
  *
  */
-function getPowerFunction() {
-  throw new Error('Not implemented');
+function getPowerFunction(exponent) {
   // eslint-disable-next-line func-names
-  // return function (x) {
-  //   return x ** exponent;
-  // };
+  return function (x) {
+    return x ** exponent;
+  };
 }
 
 /**
@@ -68,22 +67,21 @@ function getPowerFunction() {
  *   getPolynom(8)     => y = 8
  *   getPolynom()      => null
  */
-function getPolynom() {
-  throw new Error('Not implemented');
-  // const len = rest.length;
-  // let y = null;
-  // // eslint-disable-next-line func-names
-  // return function (x) {
-  //   if (len === 3) {
-  //     y = rest[0] * (x ** 2) + rest[1] * x + rest[2];
-  //   } else if (len === 2) {
-  //     y = rest[0] * x + rest[1];
-  //   } else if (len === 1) {
-  //     // eslint-disable-next-line prefer-destructuring
-  //     y = rest[0];
-  //   }
-  //   return y;
-  // };
+function getPolynom(...rest) {
+  const len = rest.length;
+  let y = null;
+  // eslint-disable-next-line func-names
+  return function (x) {
+    if (len === 3) {
+      y = rest[0] * (x ** 2) + rest[1] * x + rest[2];
+    } else if (len === 2) {
+      y = rest[0] * x + rest[1];
+    } else if (len === 1) {
+      // eslint-disable-next-line prefer-destructuring
+      y = rest[0];
+    }
+    return y;
+  };
 }
 
 /**
@@ -100,13 +98,12 @@ function getPolynom() {
  *   ...
  *   memoizer() => the same random number  (next run, returns the previous cached result)
  */
-function memoize() {
-  throw new Error('Not implemented');
-  // const x = func();
-  // // eslint-disable-next-line func-names
-  // return function () {
-  //   return x;
-  // };
+function memoize(func) {
+  const x = func();
+  // eslint-disable-next-line func-names
+  return function () {
+    return x;
+  };
 }
 
 /**
