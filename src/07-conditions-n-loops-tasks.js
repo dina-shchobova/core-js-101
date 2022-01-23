@@ -189,13 +189,14 @@ function isInsideCircle(circle, point) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(str) {
-  for (let i = 0; i < str.length; i += 1) {
-    if (str.indexOf(str[i]) === str.lastIndexOf(str[i])) {
-      return str[i];
-    }
-  }
-  return null;
+function findFirstSingleChar() {
+  throw new Error('Not implemented');
+  // for (let i = 0; i < str.length; i += 1) {
+  //   if (str.indexOf(str[i]) === str.lastIndexOf(str[i])) {
+  //     return str[i];
+  //   }
+  // }
+  // return null;
 }
 
 /**
@@ -327,18 +328,19 @@ function isCreditCardNumber(ccn) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(num) {
-  let sum = 0;
-  while (num > 0) {
-    sum += num % 10;
-    // eslint-disable-next-line no-param-reassign
-    num = Math.floor(num / 10);
-  }
-
-  if (sum < 10) {
-    return sum;
-  }
-  return getDigitalRoot(sum);
+function getDigitalRoot() {
+  throw new Error('Not implemented');
+  // let sum = 0;
+  // while (num > 0) {
+  //   sum += num % 10;
+  //   // eslint-disable-next-line no-param-reassign
+  //   num = Math.floor(num / 10);
+  // }
+  //
+  // if (sum < 10) {
+  //   return sum;
+  // }
+  // return getDigitalRoot(sum);
 }
 
 
