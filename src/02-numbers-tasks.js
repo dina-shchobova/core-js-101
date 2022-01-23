@@ -43,20 +43,18 @@ function getCircleCircumference(radius) {
  *
  * @param {number} value1
  * @param {number} value2
- * @return {number}
+ * @return {bigint}
  *
  * @example:
  *   5, 5  => 5
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function getAverage(value1, value2) {
+  // throw new Error('Not implemented');
   // eslint-disable-next-line no-undef
   // return (BigInt(value1) + BigInt(value2)) / BigInt(2);
-  // const min = Math.min(value1, value2);
-  // const max = Math.max(value1, value2);
-  // return min + (max - min) / 2;
+  return (value1 / 2 + value2 / 2);
 }
 
 /**
