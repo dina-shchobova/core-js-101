@@ -47,11 +47,12 @@ function getComposition(f, g) {
  *   power05(16) => 4
  *
  */
-function getPowerFunction(exponent) {
+function getPowerFunction() {
+  throw new Error('Not implemented');
   // eslint-disable-next-line func-names
-  return function (x) {
-    return x ** exponent;
-  };
+  // return function (x) {
+  //   return x ** exponent;
+  // };
 }
 
 /**
