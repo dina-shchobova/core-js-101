@@ -570,11 +570,22 @@ function distinct(arr) {
  *    "Poland" => ["Lodz"]
  *   }
  */
-function group(/* array, keySelector, valueSelector */) {
-  throw new Error('Not implemented');
-  /*   const arrKey = array.map(keySelector);
-  const filterKey = arrKey.filter((elem, i, res) => !(res.slice(0, i).includes(elem)));
-  const map = new Map(); */
+function group(array, keySelector, valueSelector) {
+  // throw new Error('Not implemented');
+  const keys = array.map(keySelector).filter((item, pos, arr) => arr.indexOf(item) === pos);
+  // array.map(keySelector).filter((key) => {
+  //   if (keys.includes(key)) {
+  //     return false;
+  //   }
+  //   keys.push(key);
+  //   return true;
+  // });
+  const map = new Map();
+  // eslint-disable-next-line array-callback-return
+  keys.map((key) => {
+    map.set(key, array.filter((item) => keySelector(item) === key).map(valueSelector));
+  });
+  return map;
 }
 
 
