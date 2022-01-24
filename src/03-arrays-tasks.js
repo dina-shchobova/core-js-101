@@ -275,16 +275,13 @@ function getSecondItems(arr) {
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
-  // const arr2 = [];
-  // for (let i = 0; i < arr.length; i += 1) {
-  //   let repeat = 1;
-  //   while (repeat <= i + 1) {
-  //     arr2.push(arr[i]);
-  //     repeat += 1;
-  //   }
-  // }
+function propagateItemsByPositionIndex(arr) {
+  // throw new Error('Not implemented');
+  if (arr.length === 0 || arr.length === 1) {
+    return arr;
+  }
+  const arr2 = arr.map((item, index) => Array(index + 1).fill(item));
+  return arr2.reduce((a, b) => a.concat(b));
 }
 
 /**
@@ -513,7 +510,7 @@ function getIdentityMatrix(/* n */) {
  *
  * @param {number} start
  * @param {number} end
- * @return {array}
+ * @return {number}
  *
  * @example
  *     1, 5  => [ 1, 2, 3, 4, 5 ]
@@ -521,14 +518,11 @@ function getIdentityMatrix(/* n */) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
-  // const arr = [];
-  // let value = start;
-  // while (value <= end) {
-  //   arr.push(value);
-  //   value += 1;
-  // }
+function getIntervalArray(start, end) {
+  // throw new Error('Not implemented');
+  const len = end - start + 1;
+  const arr = Array(len).fill(start);
+  return arr.map((item, index) => item + index);
 }
 
 /**
